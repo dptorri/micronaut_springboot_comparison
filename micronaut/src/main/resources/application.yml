@@ -1,3 +1,5 @@
 micronaut:
   application:
     name: rest
+  server:
+    port : 8082
