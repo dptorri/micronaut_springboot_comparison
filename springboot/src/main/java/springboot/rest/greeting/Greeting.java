@@ -1,4 +1,4 @@
-package springboot.rest;
+package springboot.rest.greeting;
 
 public class Greeting {
 
