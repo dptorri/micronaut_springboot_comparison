@@ -9,7 +9,9 @@
 
 3. Setup and test `Greeting` bean methods
 
-4. Setup and test `HomeTest` to check for response ok and content
+4. Unit test `HomeControllerTest` to check for response
+
+4. Integration test `GreetingControllerTest` to check for response
 
 5. Setup and test `GreetingTest` to check for response ok and content
 
