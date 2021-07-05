@@ -25,10 +25,13 @@
    responsibility principle. It separates what data accesses the application needs, in terms of 
    domain-specific objects and data types (the public interface of the DAO), and how these needs 
    can be satisfied with a specific DBMS, database schema, etc. (the implementation of the DAO).
-   
+   7.3 Create a UserResource to list information
 ```
     - Retrieve all Users    - GET       /users
-    - Create a User         - POST      /users
     - Retrive one User      - GET       /users/{id}
+```
+   7.4 Create a UserResource to input details of a user
+```
     - Delete a User         - DELETE    /users/{id}
+    - Create a User         - POST      /users
 ```
