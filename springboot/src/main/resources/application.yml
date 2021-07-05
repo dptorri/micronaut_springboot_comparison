@@ -1,2 +1,6 @@
 server:
   port: 8081
+  error:
+    include-details: always
+    include-message: always
+    include-binding-errors: always

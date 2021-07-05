@@ -35,3 +35,4 @@
     - Delete a User         - DELETE    /users/{id}
     - Create a User         - POST      /users
 ```
+   7.5 Create a UserResource handle not found user
