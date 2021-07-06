@@ -8,6 +8,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "Springboot Home";
+        return "" +
+                "<p>Springboot</p>" +
+                "<ul>Endpoints" +
+                "<li>greeting</li>" +
+                "<li>users</li>" +
+                "<li>user / {id}</li>" +
+                "</ul>" +
+                "";
     }
 }
