@@ -43,19 +43,22 @@
 
 7.6 Return status CREATED after input details of a user
 
-7.7 Create a custom ExceptionResponse
+7.7 Create a custom ExceptionResponse based on ResponseEntityExceptionHandler
 ```
 class ExceptionResponse {
        @ExceptionHandler(Exception.class)
     public final ResponseEntity handleAllExceptions(Exception ex, WebRequest request) {
 
         ExceptionResponse exceptionResponse =
-                new ExceptionResponse(
-                        new Date(),    // timestamp
-                        ex.getMessage(), // message
-                        request.getDescription(false)); // detail
+                new ExceptionResponse(                   // new instance of our exception bean
+                        new Date(),                      // timestamp
+                        ex.getMessage(),                 // message
+                        request.getDescription(false));  // detail
 
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     } 
 }
 ```
+
+7.8 Return a different `HttpStatus.NOT_FOUND` for `UserNotFoundException`
+
