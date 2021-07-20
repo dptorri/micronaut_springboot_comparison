@@ -56,6 +56,6 @@ class ExceptionResponse {
                         request.getDescription(false)); // detail
 
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    } 
 }
 ```
