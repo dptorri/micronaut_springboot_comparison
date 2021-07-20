@@ -105,4 +105,5 @@ public class ExceptionHelper {
         return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
  ```
+7.10 Delete a resource from UserDaoService
 
