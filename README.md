@@ -62,3 +62,47 @@ class ExceptionResponse {
 
 7.8 Return a different `HttpStatus.NOT_FOUND` for `UserNotFoundException`
 
+7.9 Improve exception handling using @ControllerAdvice
+
+We don't need to catch any exception at each method or class separately instead you can just
+throw the exception from the method and then it will be caught under the central exception 
+handler class annotated by @ControllerAdvice
+```
+   - Retrieve all Users    - GET       /users
+   - Retrive one User      - GET       /users/{id}
+   - Create a User         - POST      /users
+```
+WITHOUT @ControllerAdvice we have endless try catch blocks
+```
+   @GetMapping(path="/{userId}", produces = "application/json")
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    public ResponseEntity<User> getEmployees(@PathVariable Long userId) {
+        ResponseEntity<User> response = null;
+        try { 
+            if (something is wrong) {
+               throw new SomeException("User Id is not valid");
+            }
+            return proper ResponseEntity
+        }
+        catch(SomeException e) {
+            Logger.error("Something is invalid Input:",e.getMessage());
+            response = new ResponseEntity<User>(user, HttpStatus.BAD_REQUEST);
+        }
+        catch(Exception e) {        
+            Logger.error("System Error:",e.getMessage());
+            response = new ResponseEntity<User>(user,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+```   
+WITH @ControllerAdvice we can reuse the logic for different entities User, Post, etc
+```
+@ControllerAdvice
+public class ExceptionHelper {
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionHelper.class);
+    
+    @ExceptionHandler(value = { InvalidInputException.class })
+    public ResponseEntity<Object> handleInvalidInputException(InvalidInputException ex) {
+        LOGGER.error("Invalid Input Exception: ",ex.getMessage());
+        return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+    }
+ ```
+
