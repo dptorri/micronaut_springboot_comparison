@@ -7,6 +7,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 public class UserResource {
@@ -30,7 +31,7 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Object> createUser(@RequestBody User user) {
+    public ResponseEntity<Object> createUser(@RequestBody @Valid User user) {
         User savedUser = service.save(user);
 
         URI location = ServletUriComponentsBuilder
