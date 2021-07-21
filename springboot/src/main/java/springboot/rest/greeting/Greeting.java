@@ -1,17 +1,17 @@
 package springboot.rest.greeting;
 
-public class Greeting {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.RepresentationModel;
 
-    private final long id;
+public class Greeting extends RepresentationModel<Greeting> {
+
     private final String content;
 
-    public Greeting(long id, String content) {
-        this.id = id;
+    @JsonCreator
+    public Greeting(@JsonProperty("content") String content) {
         this.content = content;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getContent() {

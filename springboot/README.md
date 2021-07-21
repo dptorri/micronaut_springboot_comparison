@@ -119,9 +119,17 @@ and also in the bean.
 7.12  Override HandleMethodArgumentNotValid to give additional details.
 When binding to a specific method fails, HandleMethodArgumentNotValid gets called. So we 
 override this method to give the consumer the details of what has been thrown.
-````
+```
 {
     "timestamp": "2021-07-20T20:07:52.667+00:00",
     "message": "Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.Object> springboot.rest.user.UserResource.createUser(springboot.rest.user.User): [Field error in object 'user' on field 'birthDate': rejected value [Sat Aug 05 14:32:13 CEST 2090]; codes [Past.user.birthDate,Past.birthDate,Past.java.util.Date,Past]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.birthDate,birthDate]; arguments []; default message [birthDate]]; default message [must be a past date]] ",
     "detail": "org.springframework.validation.BeanPropertyBindingResult: 1 errors\nField error in object 'user' on field 'birthDate': rejected value [Sat Aug 05 14:32:13 CEST 2090]; codes [Past.user.birthDate,Past.birthDate,Past.java.util.Date,Past]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.birthDate,birthDate]; arguments []; default message [birthDate]]; default message [must be a past date]"
-}```
+}
+```
+
+7.13 Enhance `user/{id}` with Springboot starter HATEOAS
+Add a link to the resource that retrieves all users is not the same as the URI.
+Hypermedia as the Engine of Application State (HATEOAS) is a constraint of the REST 
+application architecture that distinguishes it from other network application architectures.
+With HATEOAS, a client interacts with a network application whose application servers provide 
+information dynamically through hypermedia.
