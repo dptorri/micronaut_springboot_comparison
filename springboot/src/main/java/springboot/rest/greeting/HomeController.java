@@ -12,6 +12,7 @@ public class HomeController {
                 "<p>Springboot</p>" +
                 "<ul>Endpoints" +
                 "<li>greeting</li>" +
+                "<li>greetingI18n</li>" +
                 "<li>users</li>" +
                 "<li>user / {id}</li>" +
                 "</ul>" +

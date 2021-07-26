@@ -1,21 +1,21 @@
 ## Springboot/Micronaut comparison
 
 ### Tasks list
-#### Setup and simple test of endpoints
+##### Setup and simple test of endpoints
 
-1. Add starter java 11 initializer for mn and springboot
+##### 1. Add starter java 11 initializer for mn and springboot
 
-2. Add `Greeting` Bean and `GreetingController`. Setup to application.yml and port to 8081.
+##### 2. Add `Greeting` Bean and `GreetingController`. Setup to application.yml and port to 8081.
 
-3. Setup and test `Greeting` bean methods
+##### 3. Setup and test `Greeting` bean methods
 
-4. Unit test `HomeControllerTest` to check for response
+##### 4. Unit test `HomeControllerTest` to check for response
 
-5. Integration test `GreetingControllerTest` to check for response
+##### 5. Integration test `GreetingControllerTest` to check for response
 
-6. Setup and test `GreetingTest` to check for response ok and content
+##### 6. Setup and test `GreetingTest` to check for response ok and content
 
-7. Implement UserService
+##### 7. Implement UserService
 
 7.1 Create a User bean
 
@@ -127,9 +127,37 @@ override this method to give the consumer the details of what has been thrown.
 }
 ```
 
-7.13 Enhance `user/{id}` with Springboot starter HATEOAS
+7.13 Enhance `greeting` with Springboot starter HATEOAS
 Add a link to the resource that retrieves all users is not the same as the URI.
 Hypermedia as the Engine of Application State (HATEOAS) is a constraint of the REST 
 application architecture that distinguishes it from other network application architectures.
 With HATEOAS, a client interacts with a network application whose application servers provide 
 information dynamically through hypermedia.
+````
+http://localhost:8081/greeting?name=User
+
+{
+    "content": "Hello, User!",
+        "_links": {
+            "self": {
+            "href": "http://localhost:8081/greeting?name=User"
+        }
+    }
+}
+````
+##### 8 Internationalization 
+
+Configuration
+
+- Local Resolver
+    - Default Locale - Locale.US
+- ResourceBundleMessageSource
+
+Usage:
+- Autowire MessageSource
+- `@RequestHeader(value = "Accept-Language", required = false) Locale locale`
+- `messageSource.getMessage("helloWorld.message", null, locale)
+
+8.1 Create an international greeting for GreetingController
+
+8.2 Create a Bean for the LocaleResolver
