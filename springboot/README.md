@@ -235,5 +235,14 @@ Add dependency 	`implementation 'org.springframework.data:spring-data-rest-hal-e
 Redirect application to port 8080 and hal will be available
 
 
+##### 12 Static filtering using @JsonIgnore and @JsonIgnoreProperties
+
+12.1 Add sample Bean with 3 fields called mockbean
+
+12.2 Add  sample filter and filter-list endpoint
+
+12.3 Filter field1 with @JsonIgnore and field3 with @JsonIgnoreProperties
+
+
 
 TODO: Enhancing Swagger documentation for client API
