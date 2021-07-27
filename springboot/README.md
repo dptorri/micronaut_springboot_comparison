@@ -167,3 +167,11 @@ The locale es passed in the request header and default to english when not give.
 
 The implementation requires to include the "Accept-Language" Header in the controller. This 
 can be accomplished by using the `LocaleContextHolder` provided by Spring
+
+##### 9 Content negotiation
+
+9.1 Generate content type XML/JSON depending on Accept Header
+
+At the moment we are not setting how the content will be displayed in the headers.
+- Make the jar available in Gradle Jackson XML
+- Accept Header should be set to `application/xml` 
