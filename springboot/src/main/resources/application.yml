@@ -4,3 +4,6 @@ server:
     include-details: always
     include-message: always
     include-binding-errors: always
+message:
+  messages:
+    basename: messages

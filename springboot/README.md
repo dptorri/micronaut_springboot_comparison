@@ -162,3 +162,8 @@ Usage:
 
 8.2 Create a Bean for the localeResolver and messageSource and update greetingI18n endpoint.
 The locale es passed in the request header and default to english when not give.
+
+8.3 Refactor SessionLocaleResolver and remove logic of Bean messageSource 
+
+The implementation requires to include the "Accept-Language" Header in the controller. This 
+can be accomplished by using the `LocaleContextHolder` provided by Spring

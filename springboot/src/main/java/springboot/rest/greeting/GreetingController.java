@@ -3,6 +3,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class GreetingController {
     }
 
     @GetMapping(path = "/greetingI18n")
-    public String greetingI18n(@RequestHeader(value = "Accept-Language", required = false) Locale locale){
-        return messageSource.getMessage("good.morning.message", null, locale);
+    public String greetingI18n() {
+        return messageSource.getMessage("good.morning.message", null, LocaleContextHolder.getLocale());
     }
 }
