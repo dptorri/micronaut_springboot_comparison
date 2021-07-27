@@ -145,7 +145,7 @@ http://localhost:8081/greeting?name=User
     }
 }
 ````
-##### 8 Internationalization 
+##### 8 Internationalization
 
 Configuration
 
@@ -160,4 +160,5 @@ Usage:
 
 8.1 Create an international greeting for GreetingController
 
-8.2 Create a Bean for the LocaleResolver
+8.2 Create a Bean for the localeResolver and messageSource and update greetingI18n endpoint.
+The locale es passed in the request header and default to english when not give.
