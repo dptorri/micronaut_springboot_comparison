@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springdoc:springdoc-openapi-ui:1.5.9'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 	implementation 'com.jayway.jsonpath:json-path:2.4.0'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
@@ -20,7 +21,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
 }
 
 test {

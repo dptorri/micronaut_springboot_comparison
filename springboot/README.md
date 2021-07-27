@@ -156,7 +156,7 @@ Configuration
 Usage:
 - Autowire MessageSource
 - `@RequestHeader(value = "Accept-Language", required = false) Locale locale`
-- `messageSource.getMessage("helloWorld.message", null, locale)
+- `messageSource.getMessage("helloWorld.message", null, locale)`
 
 8.1 Create an international greeting for GreetingController
 
@@ -175,3 +175,65 @@ can be accomplished by using the `LocaleContextHolder` provided by Spring
 At the moment we are not setting how the content will be displayed in the headers.
 - Make the jar available in Gradle Jackson XML
 - Accept Header should be set to `application/xml` 
+
+##### 10 Documentation using Swagger
+
+10.1 Add SwaggerUI dependency
+Swagger 
+- Develop
+- Interact
+- Document
+
+SOAP has WSDL for documentation
+
+REST has no formal documentation in spec
+
+Swagger autocreates documentation from metadata in JSON
+```
+http://localhost:8081/swagger-ui/index.html
+...
+http://localhost:8081/v3/api-docs
+"openapi": "3.0.1",
+"info": {},         // High level information
+"servers": [
+  {
+    "url": "http://localhost:8081",
+    "description": "Generated server url"
+  }
+],
+"paths": {},        // all exposed resources
+"components": {}
+```
+
+##### 11 Add Actuator and Hal browser
+
+Add dependency `implementation 'org.springframework.boot:spring-boot-starter-actuator'` 
+Monitoring our app, gathering metrics, understanding traffic, or the state of our 
+database become trivial with this dependency.
+by default, all Actuator endpoints are now placed under the /actuator path.
+```
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost:8081/actuator",
+      "templated": false
+    },
+    "health": {
+      "href": "http://localhost:8081/actuator/health",
+      "templated": false
+    },
+    "health-path": {
+      "href": "http://localhost:8081/actuator/health/{*path}",
+      "templated": true
+    }
+  }
+}
+```
+
+Add dependency 	`implementation 'org.springframework.data:spring-data-rest-hal-explorer:3.5.3'`
+
+Redirect application to port 8080 and hal will be available
+
+
+
+TODO: Enhancing Swagger documentation for client API
