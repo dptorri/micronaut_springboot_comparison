@@ -252,4 +252,26 @@ Redirect application to port 8080 and hal will be available
 }
 ```
 
+12.5 Filter filtering-list endpoint @JsonFilter("MockBeanFilter")
+
+```
+2021-07-28 15:11:19.436  WARN 69953 --- [nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : 
+Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: 
+[simple type, class springboot.rest.mock.MockBean]; nested exception is com.fasterxml.jackson.databind.
+exc.InvalidDefinitionException: Cannot resolve PropertyFilter with id 'MockBeanFilter'; 
+no FilterProvider configured (through reference chain: java.util.Arrays$ArrayList[0])]
+
+here you have to change the return type from List<MockBean> to MappingJacksonValue mapping
+
+[
+    {
+        "field2": "fieldValue2a",
+        "field3": "fieldValue3a"
+    },
+    {
+        "field2": "fieldValue2b",
+        "field3": "fieldValue3b"
+    }
+]
+```
 TODO: Enhancing Swagger documentation for client API

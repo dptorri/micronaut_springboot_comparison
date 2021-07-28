@@ -18,9 +18,9 @@ public class FilteringController {
 
         MockBean mockBean = new MockBean("value1", "value2", "value3");
 
-
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
         .filterOutAllExcept("field1", "field2");
+
         FilterProvider filters = new SimpleFilterProvider().addFilter("MockBeanFilter", filter);
 
         MappingJacksonValue mapping = new MappingJacksonValue(mockBean);
@@ -31,10 +31,21 @@ public class FilteringController {
     }
 
     @GetMapping("/filtering-list")
-    public List<MockBean> retrieveListOfMockBeans() {
-        return Arrays.asList(
-                new MockBean("fieldValue1a", "fieldValue2a", "fieldValue3a"),
-                new MockBean("fieldValue1b", "fieldValue2b", "fieldValue3b")
+    public MappingJacksonValue retrieveListOfMockBeans() {
+        List<MockBean> list = Arrays.asList(
+            new MockBean("fieldValue1a", "fieldValue2a", "fieldValue3a"),
+            new MockBean("fieldValue1b", "fieldValue2b", "fieldValue3b")
         );
+
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("field2", "field3");
+
+        FilterProvider filters = new SimpleFilterProvider().addFilter("MockBeanFilter", filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(list);
+
+        mapping.setFilters(filters);
+
+        return mapping;
     }
 }
