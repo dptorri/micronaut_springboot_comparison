@@ -1,11 +1,9 @@
 package springboot.rest.mock;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
-@JsonIgnoreProperties( value ={"field3"})
+@JsonFilter("MockBeanFilter")
 public class MockBean {
-    @JsonIgnore
     private String field1;
     private String field2;
     private String field3;

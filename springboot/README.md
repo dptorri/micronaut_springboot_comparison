@@ -243,6 +243,13 @@ Redirect application to port 8080 and hal will be available
 
 12.3 Filter field1 with @JsonIgnore and field3 with @JsonIgnoreProperties
 
+12.4 Filter with @JsonFilter("MockBeanFilter"), SimpleBeanPropertyFilter and MappingJacksonValue
 
+```
+{
+    "field1": "value1",
+    "field2": "value2"
+}
+```
 
 TODO: Enhancing Swagger documentation for client API
