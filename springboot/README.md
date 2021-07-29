@@ -282,10 +282,10 @@ here you have to change the return type from List<MockBean> to MappingJacksonVal
 13.2 Versioning with a RequestParam
 ```
 
-@GetMapping(value="/person/param", params="version=1")
-public PersonV1 personParamV1(){
-    return new PersonV1("Bob Param");
-}
+    @GetMapping(value="/person/param", params="version=1")
+    public PersonV1 personParamV1(){
+        return new PersonV1("Bob Param");
+    }
 ------------------------------------------------------------    
 ❯ curl -X GET 'http://localhost:8080/person/param?version=1'
 
@@ -295,5 +295,35 @@ public PersonV1 personParamV1(){
 
 {"name":{"firstName":"Bob","lastName":"Param"}}%                                                                         
 ```
+
+13.3 Versioning with Headers and Accept Headers
+
+```
+
+    @GetMapping(value="/person/header", headers="X-API-VERSION=1")
+    public PersonV1 personHeaderV1(){
+        return new PersonV1("Bob Header");
+    }
+------------------------------------------------------------    
+❯ curl -H "X-API-VERSION:1" http://localhost:8080/person/header
+{"name":"Bob Header"}%  
+
+❯ curl -H "X-API-VERSION:2" http://localhost:8080/person/header
+{"name":{"firstName":"Bob","lastName":"Header"}}%  
+
+    @GetMapping(value="/person/produces", produces="application/vnd.company.app-v1+json")
+    public PersonV1 personProducesV1(){
+        return new PersonV1("Bob Produces");
+    }                                                                                                  
+
+------------------------------------------------------------    
+
+❯ curl -H "Accept:application/vnd.company.app-v1+json" http://localhost:8080/person/produces
+{"name":"Bob Produces"}%       
+                                                                                          
+❯ curl -H "Accept:application/vnd.company.app-v2+json" http://localhost:8080/person/produces
+{"name":{"firstName":"Bob","lastName":"Produces"}}%    
+```
+
 
 TODO: Enhancing Swagger documentation for client API
