@@ -12,9 +12,13 @@ public class PersonVersioningController {
     }
 
     @GetMapping("v2/person")
-    public PersonV2 personV2(){
-        return new PersonV2(
-                new Name("John","Cena")
-        );
+    public PersonV2 personV2(){ return new PersonV2(new Name("John","Cena")); }
+
+    @GetMapping(value="/person/param", params="version=1")
+    public PersonV1 personParamV1(){
+        return new PersonV1("Bob Param");
     }
+
+    @GetMapping(value="/person/param", params="version=2")
+    public PersonV2 personParamV2(){ return new PersonV2(new Name("Bob","Param")); }
 }

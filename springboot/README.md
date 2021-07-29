@@ -279,4 +279,21 @@ here you have to change the return type from List<MockBean> to MappingJacksonVal
 
 13.1 Versioning with PersonVersioningController
 
+13.2 Versioning with a RequestParam
+```
+
+@GetMapping(value="/person/param", params="version=1")
+public PersonV1 personParamV1(){
+    return new PersonV1("Bob Param");
+}
+------------------------------------------------------------    
+❯ curl -X GET 'http://localhost:8080/person/param?version=1'
+
+{"name":"Bob Param"}%  
+
+❯ curl -X GET 'http://localhost:8080/person/param?version=2'
+
+{"name":{"firstName":"Bob","lastName":"Param"}}%                                                                         
+```
+
 TODO: Enhancing Swagger documentation for client API
